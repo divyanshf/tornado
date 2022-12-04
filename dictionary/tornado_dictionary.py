@@ -28,6 +28,10 @@ class TornadoDic:
     NN = "NN"
     K_NN = "K NEAREST NEIGHBOURS"
     KNN = "KNN"
+    LOG_LIN = "LOG LINEAR"
+    LL = "LL"
+    LOG_REG = "LOGISTIC REGRESSION"
+    LR = "LR"
 
     MDDM_A = "MDDM.A"
     MDDM_G = "MDDM.G"
@@ -82,6 +86,10 @@ class TornadoDic:
             name = TornadoDic.PR
         elif name == TornadoDic.NEURAL_NETWORK:
             name = TornadoDic.NN
-        elif name.endswith('NEAREST NEIGHBORS'):
-            name = name.replace('NEAREST NEIGHBORS', 'NN')
+        elif name == TornadoDic.LOG_REG:
+            name = TornadoDic.LR
+        elif name == TornadoDic.LOG_LIN:
+            name = TornadoDic.LL
+        elif name.endswith("NEAREST NEIGHBORS"):
+            name = name.replace("NEAREST NEIGHBORS", "NN")
         return name

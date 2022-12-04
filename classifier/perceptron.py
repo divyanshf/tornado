@@ -14,7 +14,7 @@ import math
 import operator
 import random
 from collections import OrderedDict
-
+import copy
 from classifier.classifier import SuperClassifier
 from data_structures.attribute import Attribute
 from dictionary.tornado_dictionary import TornadoDic
@@ -33,9 +33,11 @@ class Perceptron(SuperClassifier):
     __BIAS_ATTRIBUTE.set_possible_values(1)
 
     def __init__(self, labels, attributes, learning_rate=1):
-        super().__init__(labels, attributes)
+        attrs = copy.copy(attributes)
+        attrs.append(self.__BIAS_ATTRIBUTE)
 
-        attributes.append(self.__BIAS_ATTRIBUTE)
+        super().__init__(labels, attrs)
+
         self.WEIGHTS = OrderedDict()
         self.__initialize_weights()
         self.LEARNING_RATE = learning_rate
