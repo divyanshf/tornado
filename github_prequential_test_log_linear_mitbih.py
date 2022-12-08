@@ -14,20 +14,61 @@ from tasks.__init__ import *
 
 
 # 1. Creating a project
-project = Project("projects/single", "sine1")
+project = Project("projects/single", "ll-mit")
 
 # 2. Loading an arff file
-labels, attributes, stream_records = ARFFReader.read(
-    "data_streams/sine1_w_50_n_0.1/sine1_w_50_n_0.1_101.arff"
-)
+labels, attributes, stream_records = ARFFReader.read("arff-dataset/final.arff")
 attributes_scheme = AttributeScheme.get_scheme(attributes)
 
 # 3. Initializing a Learner
-learner = NaiveBayes(labels, attributes_scheme["nominal"])
+learner = LogLinear(labels, attributes_scheme["nominal"])
 
 # 4. Initializing a drift detector
 detector = FHDDM(n=100)
-actual_drift_points = [20000, 40000, 60000, 80000]
+actual_drift_points = [
+    200,
+    500,
+    600,
+    900,
+    1200,
+    1500,
+    1800,
+    2000,
+    2300,
+    2600,
+    2700,
+    3000,
+    3250,
+    3500,
+    3800,
+    4000,
+    4300,
+    4800,
+    5000,
+    5300,
+    5600,
+    6000,
+    6150,
+    6500,
+    6800,
+    7000,
+    7350,
+    7600,
+    7900,
+    8200,
+    8500,
+    8800,
+    9000,
+    9400,
+    9700,
+    10000,
+    10250,
+    10500,
+    10850,
+    11150,
+    11450,
+    11700,
+]
 drift_acceptance_interval = 250
 
 # 5. Creating a Prequential Evaluation Process

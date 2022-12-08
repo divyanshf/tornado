@@ -25,34 +25,42 @@ conda install -c conda-forge pympler
 Once you have all the packages installed, you may run the framework.
 
 Three sample codes are prepared to show how you can use the framework. Those files are:
-* **_github_prequential_test.py_** - This file lets you evaluate an adaptive algorithm, i.e. a pair of a learner and a drift detector, prequentially. In this example, Naive Bayes is the learner and Fast Hoeffding Drift Detection Method (FHDDM) is the detector. You find lists of incremental learners in `tornado/classifier/` and drift detectors in `tornado/drift_detection/`. The outputs in the created project directory are similar to:
+
+- **_github_prequential_test.py_** - This file lets you evaluate an adaptive algorithm, i.e. a pair of a learner and a drift detector, prequentially. In this example, Naive Bayes is the learner and Fast Hoeffding Drift Detection Method (FHDDM) is the detector. You find lists of incremental learners in `tornado/classifier/` and drift detectors in `tornado/drift_detection/`. The outputs in the created project directory are similar to:
 
 <p align="center">
   <img src="/tutorial_img/pr/nb_fhddm.100.png" width="50%"/><br />
   <img src="/tutorial_img/pr/nb_fhddm.100.er.png" width="40%"/>
 </p>
 
-* **_github_prequential_multi_test.py_** - This file lets you run multiple adaptive algorithms together against a data stream. While algorithms are learning from instances of a data stream, the framework tells you which adaptive algorithm is optimal by considering _classification_, _adaptation_, and _resource consumption_ measures. The outputs in the created project directory are similar to:
+- **_github_prequential_multi_test.py_** - This file lets you run multiple adaptive algorithms together against a data stream. While algorithms are learning from instances of a data stream, the framework tells you which adaptive algorithm is optimal by considering _classification_, _adaptation_, and _resource consumption_ measures. The outputs in the created project directory are similar to:
 
 <p align="center">
   <img src="/tutorial_img/multi/sine1_multi_score.png" width="80%"/><br />
   <img src="/tutorial_img/multi/sine1_multi_sine1_cr.png" width="75%"/>
 </p>
 
-* **_github_generate_stream.py_** - The file helps you use the Tornado framework for generating synthetic data streams containing concept drifts. You find a list of stream generators in `tornado/streams/generators/`.
+- **_github_generate_stream.py_** - The file helps you use the Tornado framework for generating synthetic data streams containing concept drifts. You find a list of stream generators in `tornado/streams/generators/`.
+
+### Modifications
+
+- ***classifier/perceptron.py*** - Fixed the bug in the code where it was modifying the global/original attributes of the data by appending a bias attribute instead of appending it a local replica of the attributes.
+- **_preprocess_mit_bih.ipynb_** _-_ The file provides the code for labelling the unlabelled MIT-BIH data and storing it into an arff formatted file for use with the Tornado Framework.
+- ***classifier/logistic_regression.py*** - Implementation of an online version of the multiclass logistic regression algorithm to classify data.
+- ***classifier/loglinear.py*** - Implementation of an online version of the log linear multiclass classifier algorithm to classify data.
 
 ### Citation
 
 Please kindly cite the following papers, or thesis, if you plan to use Tornado or any of its components:
 
-1. Pesaranghader, Ali. "__A Reservoir of Adaptive Algorithms for Online Learning from Evolving Data Streams__", Ph.D. Dissertation, Université d'Ottawa/University of Ottawa, 2018. <br />
-DOI: http://dx.doi.org/10.20381/ruor-22444
-2. Pesaranghader, Ali, et al. "__Reservoir of Diverse Adaptive Learners and Stacking Fast Hoeffding Drift Detection Methods for Evolving Data Streams__", *Machine Learning Journal*, 2018. <br />
-Pre-print available at: https://arxiv.org/abs/1709.02457, DOI: https://doi.org/10.1007/s10994-018-5719-z
-3. Pesaranghader, Ali, et al. "__A framework for classification in data streams using multi-strategy learning__", *International Conference on Discovery Science*, 2016. <br />
-Pre-print available at: http://iwera.ir/~ali/papers/ds2016.pdf, DOI: https://doi.org/10.1007/978-3-319-46307-0_22
+1. Pesaranghader, Ali. "**A Reservoir of Adaptive Algorithms for Online Learning from Evolving Data Streams**", Ph.D. Dissertation, Université d'Ottawa/University of Ottawa, 2018. `<br />`
+   DOI: http://dx.doi.org/10.20381/ruor-22444
+2. Pesaranghader, Ali, et al. "**Reservoir of Diverse Adaptive Learners and Stacking Fast Hoeffding Drift Detection Methods for Evolving Data Streams**", _Machine Learning Journal_, 2018. `<br />`
+   Pre-print available at: https://arxiv.org/abs/1709.02457, DOI: https://doi.org/10.1007/s10994-018-5719-z
+3. Pesaranghader, Ali, et al. "**A framework for classification in data streams using multi-strategy learning**", _International Conference on Discovery Science_, 2016. `<br />`
+   Pre-print available at: http://iwera.ir/~ali/papers/ds2016.pdf, DOI: https://doi.org/10.1007/978-3-319-46307-0_22
 
 <br/>
 <br/>
 
-<sub>Ali Pesaranghader © 2020++ | MIT License</sub>
+`<sub>`Ali Pesaranghader © 2020++ | MIT License `</sub>`
